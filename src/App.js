@@ -1,10 +1,10 @@
 import React from 'react';
-import Wrapper from "./Wrapper";
+import Component from "./Component";
 
 function App() {
   return (
     <div className="App">
-      <Wrapper />
+      <Component />
     </div>
   );
 }

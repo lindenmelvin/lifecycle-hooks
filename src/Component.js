@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Test from "./Test";
+import React, { useEffect } from "react";
 
-const Component = (props) => {
+const Component = () => {
   useEffect(() => {
-    console.log("Mount")
-    return () => console.log("Unmount")
-  }, [])
+    document.title = `Time is: ${new Date()}`;
 
-  const [count, setCount] = useState(0);
+    const intervalId = setInterval(() => {
+      document.title = `Time is: ${new Date()}`;
+    }, 1000);
 
-  return (
-    <>
-      <h1>Hello World</h1>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-      <div>{count}</div>
-      <Test />
-    </>
-  )
-}
+    return () => {
+      document.title = "Time stopped.";
+      clearInterval(intervalId);
+    }
+  }, []);
+
+  return <h1>What time is it?</h1>;
+};
 
 export default Component;
